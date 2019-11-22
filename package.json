@@ -10,9 +10,7 @@
     "customelements",
     "es6"
   ],
-  "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.4.0"
-  },
+  "dependencies": {},
   "main": "zino-alert.js",
   "author": {
     "name": "Dimitar Ivanov",
