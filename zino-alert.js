@@ -766,4 +766,4 @@ if (typeof customElements !== "undefined") {
     customElements.define("zino-alert", ZinoAlert);
 }
 
-//export { ZinoAlert };
+export { ZinoAlert };
