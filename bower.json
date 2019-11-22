@@ -1,0 +1,25 @@
+{
+  "name": "zino-alert",
+  "description": "JavaScript Alert Web Component",
+  "main": "zino-alert.js",
+  "authors": [
+    {"name": "Dimitar Ivanov", "homepage": "https://twitter.com/DimitarIvanov"}
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "alert",
+    "webcomponents",
+    "sweetalert",
+    "customelements",
+    "es6"
+  ],
+  "homepage": "https://github.com/riverside/zino-alert",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

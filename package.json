@@ -1,0 +1,38 @@
+{
+  "name": "zino-alert",
+  "version": "1.0.0",
+  "description": "JavaScript Alert Web Component",
+  "keywords": [
+    "javascript",
+    "alert",
+    "webcomponents",
+    "sweetalert",
+    "customelements",
+    "es6"
+  ],
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.4.0"
+  },
+  "main": "zino-alert.js",
+  "author": {
+    "name": "Dimitar Ivanov",
+    "url": "https://twitter.com/DimitarIvanov"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riverside/zino-alert.git"
+  },
+  "bugs": "https://github.com/riverside/zino-alert/issues",
+  "homepage": "https://github.com/riverside/zino-alert",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "verbose": true
+  }
+}
