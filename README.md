@@ -90,4 +90,4 @@ zino-grid {
 ## License
 zino-alert is licensed under the MIT license.
 
-Copyright (c) 2019 Dimitar Ivanov
+Copyright (c) 2019-2020 Dimitar Ivanov
