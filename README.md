@@ -3,27 +3,33 @@ Autonomous open source alert component with RTL support built on Custom Elements
 
 ## How to use
 
-### Install
-##### Install with `npm`
-`$ npm install zino-alert`
+### Installation
+- Install with `npm`
+```
+$ npm install zino-alert
+```
 
-##### Install with `bower`
-`$ bower install zino-alert`
+- Install with `bower`
+```
+$ bower install zino-alert
+```
 
 ### Using `zino-alert`
-##### HTML way
+- HTML way
 ```html
 <zino-alert id="alert-1"
     heading="HTML"
     text="Lorem ipsum dolor sit amet."
     type="success"></zino-alert>
 
-<script src="../zino-alert.js"></script>
+<script type="module" src="../zino-alert.js"></script>
 ```
 Alert customizations are possible via `data-*` attributes.
 
-##### using the DOM API
+- using the DOM API
 ```html
+<script type="module" src="../zino-alert.js"></script>
+
 <script>
 const alert = document.createElement("zino-alert");
 alert.heading = "DOM API";
@@ -34,9 +40,11 @@ alert.open();
 </script>
 ```
 
-##### using the constructor
+- using the constructor
 ```html
-<script>
+<script type="module">
+import {ZinoAlert} from "../zino-alert.js";
+
 const alert = new ZinoAlert({
     heading: "Constructor",
     type: "success",
@@ -72,14 +80,28 @@ zino-grid {
 ## Options
 |Option|Required|Type|Default|Description|
 |---|:---:|---|---|---|
-|**url**|Yes|String|**(empty)**|An URL with data to display in JSON format.|
-|**page**|No|Number|**1**|Currently displayed page.|
-|**perPage**|No|Number|**5**|Number of records displayed per page.|
-|**debug**|No|Boolean|**false**|Log actions in DevTools console.|
-|**filter**|No|Boolean|**false**|Allows a filtering functionallity.|
-|**sort**|No|Boolean|**false**|Allows a sort by column functionallity.|
-|**reorder**|No|Boolean|**false**|Allows a column reordering functionallity.|
-|**dir**|No|String|**ltr**|Text direction. Accepted values are **ltr** (left-to-right) and **rtl** (right-to-left)|
+|**allowEscapeKey**        |No |Boolean|**true**   |Whether to close the alert when the Escape key is pressed|
+|**animation**             |No |Boolean|**true**   |Whether to use an animation when show the alert|
+|**backdrop**              |No |Boolean|**true**   |Whether to use a backdrop|
+|**background**            |No |String |**#fff**   |The alert's background color|
+|**cancelButtonAriaLabel** |No |String |**Cancel** |The cancel button's aria-label attribute|
+|**cancelButtonColor**     |No |String |**#aaa**   |The cancel button's background color|
+|**cancelButtonText**      |No |String |**Cancel** |The cancel button's text|
+|**closeButtonAriaLabel**  |No |String |**Close**  |The close button's aria-label attribute|
+|**confirmButtonAriaLabel**|No |String |**OK**     |The confirm button's aria-label attribute|
+|**confirmButtonColor**    |No |String |**#3085d6**|The confirm button's background color|
+|**confirmButtonText**     |No |String |**OK**     |The confirm button's text|
+|**focusCancel**           |No |Boolean|**false**  |Whether to focus on cancel button when alert show|
+|**focusConfirm**          |No |Boolean|**true**   |Whether to focus on confirm button when alert show|
+|**footer**                |No |String |**(empty)**|If not empty will show it's content at the alert's footer|
+|**header**                |No |String |**(empty)**|If not empty will show it's content at the alert's header|
+|**heading**               |No |String |**(empty)**|The alert's heading text|
+|**position**              |No |String |**center** |The alert's position. Accepts: top, top-start, top-left, top-end, top-right, center, center-start, center-left, center-end, center-right, bottom, bottom-start, bottom-left, bottom-end, bottom-right|
+|**showCancelButton**      |No |Boolean|**false**  |Whether to show the cancel button|
+|**showCloseButton**       |No |Boolean|**false**  |Whether to show the close button|
+|**showConfirmButton**     |No |Boolean|**true**   |Whether to show the confirm button|
+|**text**                  |No |String |**(empty)**|The alert's text|
+|**type**                  |Yes|String |**(empty)**|The alert's icon. Accepts: success, error|
 
 ## Browser Support
 |Polyfill|Edge|IE11+|Chrome 54+|Firefox 63+|Safari 10.1+|Opera 41+|
