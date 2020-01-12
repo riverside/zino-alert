@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alert: HTML way</title>
+</head>
+<body>
+    <button type="button">html way</button>
+
+    <zino-alert id="alert-1"
+                heading="HTML"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                type="success"></zino-alert>
+    <script type="module" src="../zino-alert.js"></script>
+    <script>
+    document.querySelector("button").addEventListener("click", function (event) {
+        const alert = document.querySelector("#alert-1");
+        if (alert) {
+            alert.open();
+        }
+    });
+    </script>
+</body>
+</html>

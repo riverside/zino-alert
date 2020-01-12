@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alert: constructor</title>
+</head>
+<body>
+    <button type="button">constructor</button>
+
+    <script type="module">
+    import {ZinoAlert} from "../zino-alert.js";
+    document.querySelector("button").addEventListener("click", function (event) {
+        const alert = new ZinoAlert({
+            heading: "Constructor",
+            type: "success",
+            text: "A web component build on Custom Elements and Shadow DOM APIs.",
+            showCancelButton: "true",
+            allowEscapeKey: "true"
+        });
+        document.body.appendChild(alert);
+
+        alert.addEventListener("confirm.alert", function(event) {
+            return fetch("https://jsonplaceholder.typicode.com/posts/1").then((response) => {
+                return response.json();
+            }).then((data) => {
+                console.log(data);
+                return false;
+            });
+            return false;
+        });
+        alert.open();
+    });
+    </script>
+</body>
+</html>
