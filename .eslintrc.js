@@ -56,7 +56,7 @@ module.exports = {
             'vars': 'all'
         }],
 
-        'quotes': ['error', 'single', {
+        'quotes': ['error', 'double', {
             'allowTemplateLiterals': true,
             'avoidEscape': true
         }],
