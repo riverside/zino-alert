@@ -91,6 +91,7 @@ zino-grid {
 |**confirmButtonAriaLabel**|No |String |**OK**     |The confirm button's aria-label attribute|
 |**confirmButtonColor**    |No |String |**#3085d6**|The confirm button's background color|
 |**confirmButtonText**     |No |String |**OK**     |The confirm button's text|
+|**debug**                 |No |Boolean|**false**  |If `true` will log events into console|
 |**focusCancel**           |No |Boolean|**false**  |Whether to focus on cancel button when alert show|
 |**focusConfirm**          |No |Boolean|**true**   |Whether to focus on confirm button when alert show|
 |**footer**                |No |String |**(empty)**|If not empty will show it's content at the alert's footer|
@@ -102,6 +103,32 @@ zino-grid {
 |**showConfirmButton**     |No |Boolean|**true**   |Whether to show the confirm button|
 |**text**                  |No |String |**(empty)**|The alert's text|
 |**type**                  |Yes|String |**(empty)**|The alert's icon. Accepts: success, error|
+
+## Methods
+| Method  | Description |
+| ------- | ----------- |
+| cancel  | Manually triggers the `cancel.alert` event. |
+| close   | Manually closes an alert and triggers the `close.alert` event. | 
+| confirm | Manually triggers the `confirm.alert` event. |
+| open    | Manually opens an alert and triggers the `open.alert` event. |
+
+```javascript
+document.querySelector("zino-alert").open();
+```
+
+## Events
+| Event         | Description |
+| ------------- | ----------- |
+| cancel.alert  | This event is fired immediately when the `Cancel` button has been clicked. |
+| close.alert   | This event is fired immediately when the `close` instance method has been called. |
+| confirm.alert | This event is fired immediately when the `Confirm` button has been clicked. |
+| open.alert    | This event is fired immediately when the `open` instance method has been called. |
+
+```javascript
+document.querySelector("zino-alert").addEventListener("close.alert", function(event) {
+    // do something...    
+});
+```
 
 ## Browser Support
 |Polyfill|Edge|IE11+|Chrome 54+|Firefox 63+|Safari 10.1+|Opera 41+|
