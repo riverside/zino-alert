@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alert: Events</title>
+</head>
+<body>
+<button type="button">events</button>
+
+<zino-alert id="alert-1"
+            heading="HTML"
+            show-cancel-button="true"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            type="success"></zino-alert>
+<script type="module" src="../zino-alert.js"></script>
+<script>
+    const alert = document.querySelector("#alert-1");
+    document.querySelector("button").addEventListener("click", function (event) {
+        alert.open();
+    });
+    alert.addEventListener("cancel.alert", function(e) {
+       console.log(e);
+    });
+    alert.addEventListener("close.alert", function(e) {
+        console.log(e);
+    });
+    alert.addEventListener("confirm.alert", function(e) {
+        console.log(e);
+    });
+    alert.addEventListener("open.alert", function(e) {
+        console.log(e);
+    });
+</script>
+</body>
+</html>
