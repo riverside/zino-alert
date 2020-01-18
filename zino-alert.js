@@ -1,3 +1,14 @@
+/**
+ * Javascript Alert Web Component v1.0.0
+ *
+ * https://github.com/riverside/zino-alert
+ *
+ * Copyright 2019-2020, Dimitar Ivanov
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ */
 "use strict";
 
 const template = document.createElement("template");
