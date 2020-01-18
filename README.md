@@ -107,22 +107,22 @@ zino-grid {
 ## Methods
 | Method  | Description |
 | ------- | ----------- |
-| cancel  | Manually triggers the `cancel.alert` event. |
-| close   | Manually closes an alert and triggers the `close.alert` event. | 
-| confirm | Manually triggers the `confirm.alert` event. |
-| open    | Manually opens an alert and triggers the `open.alert` event. |
+| **cancel**  | Manually triggers the `cancel.alert` event. |
+| **close**   | Manually closes an alert and triggers the `close.alert` event. | 
+| **confirm** | Manually triggers the `confirm.alert` event. |
+| **open**    | Manually opens an alert and triggers the `open.alert` event. |
 
 ```javascript
 document.querySelector("zino-alert").open();
 ```
 
 ## Events
-| Event         | Description |
-| ------------- | ----------- |
-| cancel.alert  | This event is fired immediately when the `Cancel` button has been clicked. |
-| close.alert   | This event is fired immediately when the `close` instance method has been called. |
-| confirm.alert | This event is fired immediately when the `Confirm` button has been clicked. |
-| open.alert    | This event is fired immediately when the `open` instance method has been called. |
+| Event | Description |
+| ------| ----------- |
+| **cancel.alert**  | This event is fired immediately when the **Cancel** button has been clicked. |
+| **close.alert**   | This event is fired immediately when the `close` instance method has been called. |
+| **confirm.alert** | This event is fired immediately when the **Confirm** button has been clicked. |
+| **open.alert**    | This event is fired immediately when the `open` instance method has been called. |
 
 ```javascript
 document.querySelector("zino-alert").addEventListener("close.alert", function(event) {
