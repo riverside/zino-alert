@@ -348,6 +348,7 @@ class ZinoAlert extends HTMLElement {
             "confirm-button-aria-label",
             "confirm-button-color",
             "confirm-button-text",
+            "debug",
             "focus-cancel",
             "focus-confirm",
             "footer",
@@ -410,326 +411,337 @@ class ZinoAlert extends HTMLElement {
     }
     attributeChangedCallback(attrName, oldVal, newVal) {
         switch (attrName) {
-        case "allow-escape-key":
-            if (newVal === "true" && (oldVal === null || oldVal === "false")) {
-                document.addEventListener("keyup", this.onEscape.bind(this));
-            } else if (oldVal === "true" && newVal === "false") {
-                document.removeEventListener("keyup", this.onEscape.bind(this));
-            }
-            break;
-        case "animation":
-            this.$alert = this.shadowRoot.querySelector(".alert");
-            if (newVal === "true") {
-                this.$alert.classList.add("alert-show");
-            } else if (newVal === "false") {
-                this.$alert.classList.remove("alert-show");
-            }
-            break;
-        case "backdrop":
-            this.$backdrop = this.shadowRoot.querySelector(".alert-backdrop");
-            if (newVal === "true") {
-                this.$backdrop.classList.remove("alert-backdrop-off");
-            } else if (newVal === "false") {
-                this.$backdrop.classList.add("alert-backdrop-off");
-            }
-            break;
-        case "background":
-            this.shadowRoot.querySelector(".alert").style.backgroundColor = newVal;
-            break;
-        case "cancel-button-aria-label":
-            this.shadowRoot.querySelector(".alert-cancel").setAttribute("aria-label", newVal);
-            break;
-        case "cancel-button-color":
-            this.shadowRoot.querySelector(".alert-cancel").style.backgroundColor = newVal;
-            break;
-        case "cancel-button-text":
-            this.shadowRoot.querySelector(".alert-cancel").innerHTML = newVal;
-            break;
-        case "close-button-aria-label":
-            this.shadowRoot.querySelector(".alert-close").setAttribute("aria-label", newVal);
-            break;
-        case "confirm-button-aria-label":
-            this.shadowRoot.querySelector(".alert-confirm").setAttribute("aria-label", newVal);
-            break;
-        case "confirm-button-color":
-            this.shadowRoot.querySelector(".alert-confirm").style.backgroundColor = newVal;
-            break;
-        case "confirm-button-text":
-            this.shadowRoot.querySelector(".alert-confirm").innerHTML = newVal;
-            break;
-        case "focus-cancel":
-            this.$cancel = this.shadowRoot.querySelector(".alert-cancel");
-            if (newVal === "true") {
-                this.$cancel.setAttribute("autofocus", "");
-            } else if (newVal === "false") {
-                this.$cancel.removeAttribute("autofocus");
-            }
-            break;
-        case "focus-confirm":
-            this.$confirm = this.shadowRoot.querySelector(".alert-confirm");
-            if (newVal === "true") {
-                this.$confirm.setAttribute("autofocus", "");
-            } else if (newVal === "false") {
-                this.$confirm.removeAttribute("autofocus");
-            }
-            break;
-        case "footer":
-            this.$footer = this.shadowRoot.querySelector(".alert-footer");
-            if (newVal !== null && newVal.trim() !== "") {
-                this.$footer.innerHTML = newVal;
-                this.$footer.classList.remove("hidden");
-            } else {
-                this.$footer.classList.add("hidden");
-                this.$footer.innerHTML = "";
-            }
-            break;
-        case "header":
-            this.$header = this.shadowRoot.querySelector(".alert-header");
-            if (newVal !== null && newVal.trim() !== "") {
-                this.$header.innerHTML = newVal;
-                this.$header.classList.remove("hidden");
-            } else {
-                this.$header.classList.add("hidden");
-                this.$header.innerHTML = "";
-            }
-            break;
-        case "heading":
-            this.shadowRoot.querySelector(".alert-heading").innerHTML = newVal;
-            break;
-        case "position":
-            if (ZinoAlert.positionNames.includes(newVal)) {
+            case "allow-escape-key":
+                if (newVal === "true" && (oldVal === null || oldVal === "false")) {
+                    document.addEventListener("keyup", this.onEscape.bind(this));
+                } else if (oldVal === "true" && newVal === "false") {
+                    document.removeEventListener("keyup", this.onEscape.bind(this));
+                }
+                break;
+            case "animation":
+                this.$alert = this.shadowRoot.querySelector(".alert");
+                if (newVal === "true") {
+                    this.$alert.classList.add("alert-show");
+                } else if (newVal === "false") {
+                    this.$alert.classList.remove("alert-show");
+                }
+                break;
+            case "backdrop":
                 this.$backdrop = this.shadowRoot.querySelector(".alert-backdrop");
-                this.$backdrop.classList.remove("alert-" + oldVal);
-                this.$backdrop.classList.add("alert-" + newVal);
-            }
-            break;
-        case "show-cancel-button":
-            this.$cancel = this.shadowRoot.querySelector(".alert-cancel");
-            if (newVal === "true") {
-                this.$cancel.classList.remove("hidden");
-                this.$cancel.removeAttribute("hidden");
-            } else if (newVal === "false") {
-                this.$cancel.classList.add("hidden");
-                this.$cancel.setAttribute("hidden", "");
-            }
-            break;
-        case "show-close-button":
-            this.$close = this.shadowRoot.querySelector(".alert-close");
-            if (newVal === "true") {
-                this.$close.classList.remove("hidden");
-                this.$close.removeAttribute("hidden");
-            } else if (newVal === "false") {
-                this.$close.classList.add("hidden");
-                this.$close.setAttribute("hidden", "");
-            }
-            break;
-        case "show-confirm-button":
-            this.$confirm = this.shadowRoot.querySelector(".alert-confirm");
-            if (newVal === "true") {
-                this.$confirm.classList.remove("hidden");
-                this.$confirm.removeAttribute("hidden");
-            } else if (newVal === "false") {
-                this.$confirm.classList.add("hidden");
-                this.$confirm.setAttribute("hidden", "");
-            }
-            break;
-        case "text":
-            this.shadowRoot.querySelector(".alert-text").innerHTML = newVal;
-            break;
-        case "type":
-            this.$alert = this.shadowRoot.querySelector(".alert");
-            this.$alert.classList.remove(oldVal);
-            this.$alert.classList.add(newVal);
-            break;
+                if (newVal === "true") {
+                    this.$backdrop.classList.remove("alert-backdrop-off");
+                } else if (newVal === "false") {
+                    this.$backdrop.classList.add("alert-backdrop-off");
+                }
+                break;
+            case "background":
+                this.shadowRoot.querySelector(".alert").style.backgroundColor = newVal;
+                break;
+            case "cancel-button-aria-label":
+                this.shadowRoot.querySelector(".alert-cancel").setAttribute("aria-label", newVal);
+                break;
+            case "cancel-button-color":
+                this.shadowRoot.querySelector(".alert-cancel").style.backgroundColor = newVal;
+                break;
+            case "cancel-button-text":
+                this.shadowRoot.querySelector(".alert-cancel").innerHTML = newVal;
+                break;
+            case "close-button-aria-label":
+                this.shadowRoot.querySelector(".alert-close").setAttribute("aria-label", newVal);
+                break;
+            case "confirm-button-aria-label":
+                this.shadowRoot.querySelector(".alert-confirm").setAttribute("aria-label", newVal);
+                break;
+            case "confirm-button-color":
+                this.shadowRoot.querySelector(".alert-confirm").style.backgroundColor = newVal;
+                break;
+            case "confirm-button-text":
+                this.shadowRoot.querySelector(".alert-confirm").innerHTML = newVal;
+                break;
+            case "debug":
+                break;
+            case "focus-cancel":
+                this.$cancel = this.shadowRoot.querySelector(".alert-cancel");
+                if (newVal === "true") {
+                    this.$cancel.setAttribute("autofocus", "");
+                } else if (newVal === "false") {
+                    this.$cancel.removeAttribute("autofocus");
+                }
+                break;
+            case "focus-confirm":
+                this.$confirm = this.shadowRoot.querySelector(".alert-confirm");
+                if (newVal === "true") {
+                    this.$confirm.setAttribute("autofocus", "");
+                } else if (newVal === "false") {
+                    this.$confirm.removeAttribute("autofocus");
+                }
+                break;
+            case "footer":
+                this.$footer = this.shadowRoot.querySelector(".alert-footer");
+                if (newVal !== null && newVal.trim() !== "") {
+                    this.$footer.innerHTML = newVal;
+                    this.$footer.classList.remove("hidden");
+                } else {
+                    this.$footer.classList.add("hidden");
+                    this.$footer.innerHTML = "";
+                }
+                break;
+            case "header":
+                this.$header = this.shadowRoot.querySelector(".alert-header");
+                if (newVal !== null && newVal.trim() !== "") {
+                    this.$header.innerHTML = newVal;
+                    this.$header.classList.remove("hidden");
+                } else {
+                    this.$header.classList.add("hidden");
+                    this.$header.innerHTML = "";
+                }
+                break;
+            case "heading":
+                this.shadowRoot.querySelector(".alert-heading").innerHTML = newVal;
+                break;
+            case "position":
+                if (ZinoAlert.positionNames.includes(newVal)) {
+                    this.$backdrop = this.shadowRoot.querySelector(".alert-backdrop");
+                    this.$backdrop.classList.remove("alert-" + oldVal);
+                    this.$backdrop.classList.add("alert-" + newVal);
+                }
+                break;
+            case "show-cancel-button":
+                this.$cancel = this.shadowRoot.querySelector(".alert-cancel");
+                if (newVal === "true") {
+                    this.$cancel.classList.remove("hidden");
+                    this.$cancel.removeAttribute("hidden");
+                } else if (newVal === "false") {
+                    this.$cancel.classList.add("hidden");
+                    this.$cancel.setAttribute("hidden", "");
+                }
+                break;
+            case "show-close-button":
+                this.$close = this.shadowRoot.querySelector(".alert-close");
+                if (newVal === "true") {
+                    this.$close.classList.remove("hidden");
+                    this.$close.removeAttribute("hidden");
+                } else if (newVal === "false") {
+                    this.$close.classList.add("hidden");
+                    this.$close.setAttribute("hidden", "");
+                }
+                break;
+            case "show-confirm-button":
+                this.$confirm = this.shadowRoot.querySelector(".alert-confirm");
+                if (newVal === "true") {
+                    this.$confirm.classList.remove("hidden");
+                    this.$confirm.removeAttribute("hidden");
+                } else if (newVal === "false") {
+                    this.$confirm.classList.add("hidden");
+                    this.$confirm.setAttribute("hidden", "");
+                }
+                break;
+            case "text":
+                this.shadowRoot.querySelector(".alert-text").innerHTML = newVal;
+                break;
+            case "type":
+                this.$alert = this.shadowRoot.querySelector(".alert");
+                this.$alert.classList.remove(oldVal);
+                this.$alert.classList.add(newVal);
+                break;
         }
     }
     get allowEscapeKey() {
-        console.log('allowEscapeKey:get');
+        this.log("allowEscapeKey:get");
         return this.getAttribute("allow-escape-key") || "true";
     }
     set allowEscapeKey(val) {
-        console.log('allowEscapeKey:set');
+        this.log("allowEscapeKey:set");
         this.setAttribute("allow-escape-key", val);
     }
     get animation() {
-        console.log('animation:get');
+        this.log("animation:get");
         return this.getAttribute("animation") || "true";
     }
     set animation(val) {
-        console.log('animation:set');
+        this.log("animation:set");
         this.setAttribute("animation", val);
     }
     get backdrop() {
-        console.log('backdrop:get');
+        this.log("backdrop:get");
         return this.getAttribute("backdrop") || "true";
     }
     set backdrop(val) {
-        console.log('backdrop:set');
+        this.log("backdrop:set");
         this.setAttribute("backdrop", val);
     }
     get background() {
-        console.log('background:get');
+        this.log("background:get");
         return this.getAttribute("background");
     }
     set background(val) {
-        console.log('background:set');
+        this.log("background:set");
         this.setAttribute("background", val);
     }
     get cancelButtonAriaLabel() {
-        console.log('cancelButtonAriaLabel:get');
+        this.log("cancelButtonAriaLabel:get");
         return this.getAttribute("cancel-button-aria-label");
     }
     set cancelButtonAriaLabel(val) {
-        console.log('cancelButtonAriaLabel:set');
+        this.log("cancelButtonAriaLabel:set");
         this.setAttribute("cancel-button-aria-label", val);
     }
     get cancelButtonColor() {
-        console.log('cancelButtonColor:get');
+        this.log("cancelButtonColor:get");
         return this.getAttribute("cancel-button-color");
     }
     set cancelButtonColor(val) {
-        console.log('cancelButtonColor:set');
+        this.log("cancelButtonColor:set");
         this.setAttribute("cancel-button-color", val);
     }
     get cancelButtonText() {
-        console.log('cancelButtonText:get');
+        this.log("cancelButtonText:get");
         return this.getAttribute("cancel-button-text");
     }
     set cancelButtonText(val) {
-        console.log('cancelButtonText:set');
+        this.log("cancelButtonText:set");
         this.setAttribute("cancel-button-text", val);
     }
     get closeButtonAriaLabel() {
-        console.log('closeButtonAriaLabel:get');
+        this.log("closeButtonAriaLabel:get");
         return this.getAttribute("close-button-aria-label");
     }
     set closeButtonAriaLabel(val) {
-        console.log('closeButtonAriaLabel:set');
+        this.log("closeButtonAriaLabel:set");
         this.setAttribute("close-button-aria-label", val);
     }
     get confirmButtonAriaLabel() {
-        console.log('confirmButtonAriaLabel:get');
+        this.log("confirmButtonAriaLabel:get");
         return this.getAttribute("confirm-button-aria-label");
     }
     set confirmButtonAriaLabel(val) {
-        console.log('confirmButtonAriaLabel:set');
+        this.log("confirmButtonAriaLabel:set");
         this.setAttribute("confirm-button-aria-label", val);
     }
     get confirmButtonColor() {
-        console.log('confirmButtonColor:get');
+        this.log("confirmButtonColor:get");
         return this.getAttribute("confirm-button-color");
     }
     set confirmButtonColor(val) {
-        console.log('confirmButtonColor:set');
+        this.log("confirmButtonColor:set");
         this.setAttribute("confirm-button-color", val);
     }
     get confirmButtonText() {
-        console.log('confirmButtonText:get');
+        this.log("confirmButtonText:get");
         return this.getAttribute("confirm-button-text");
     }
     set confirmButtonText(val) {
-        console.log('confirmButtonText:set');
+        this.log("confirmButtonText:set");
         this.setAttribute("confirm-button-text", val);
     }
+    get debug() {
+        return (this.getAttribute("debug") === "true");
+    }
+    set debug(val) {
+        this.setAttribute("debug", val);
+    }
     get focusCancel() {
-        console.log('focusCancel:get');
+        this.log("focusCancel:get");
         return this.getAttribute("focus-cancel") || "false";
     }
     set focusCancel(val) {
-        console.log('focusCancel:set');
+        this.log("focusCancel:set");
         this.setAttribute("focus-cancel", val);
     }
     get focusConfirm() {
-        console.log('focusConfirm:get');
+        this.log("focusConfirm:get");
         return this.getAttribute("focus-confirm") || "true";
     }
     set focusConfirm(val) {
-        console.log('focusConfirm:set');
+        this.log("focusConfirm:set");
         this.setAttribute("focus-confirm", val);
     }
     get footer() {
-        console.log('footer:get');
+        this.log("footer:get");
         return this.getAttribute("footer");
     }
     set footer(val) {
-        console.log('footer:set');
+        this.log("footer:set");
         this.setAttribute("footer", val);
     }
     get header() {
-        console.log('header:get');
+        this.log("header:get");
         return this.getAttribute("header");
     }
     set header(val) {
-        console.log('header:set');
+        this.log("header:set");
         this.setAttribute("header", val);
     }
     get heading() {
-        console.log('heading:get');
+        this.log("heading:get");
         return this.getAttribute("heading");
     }
     set heading(val) {
-        console.log('heading:set');
+        this.log("heading:set");
         this.setAttribute("heading", val);
     }
     get position() {
-        console.log('position:get');
+        this.log("position:get");
         return this.getAttribute("position");
     }
     set position(val) {
-        console.log('position:set');
+        this.log("position:set");
         this.setAttribute("position", val);
     }
     get showCancelButton() {
-        console.log('showCancelButton:get');
+        this.log("showCancelButton:get");
         return this.getAttribute("show-cancel-button") || "false";
     }
     set showCancelButton(val) {
-        console.log('showCancelButton:set');
+        this.log("showCancelButton:set");
         this.setAttribute("show-cancel-button", val);
     }
     get showCloseButton() {
-        console.log('showCloseButton:get');
+        this.log("showCloseButton:get");
         return this.getAttribute("show-close-button") || "false";
     }
     set showCloseButton(val) {
-        console.log('showCloseButton:set');
+        this.log("showCloseButton:set");
         this.setAttribute("show-close-button", val);
     }
     get showConfirmButton() {
-        console.log('showConfirmButton:get');
+        this.log("showConfirmButton:get");
         return this.getAttribute("show-confirm-button") || "true";
     }
     set showConfirmButton(val) {
-        console.log('showConfirmButton:set');
+        this.log("showConfirmButton:set");
         this.setAttribute("show-confirm-button", val);
     }
     get text() {
-        console.log('text:get');
+        this.log("text:get");
         return this.getAttribute("text");
     }
     set text(val) {
-        console.log('text:set');
+        this.log("text:set");
         this.setAttribute("text", val);
     }
     get type() {
-        console.log('type:get');
+        this.log("type:get");
         return this.getAttribute("type");
     }
     set type(val) {
-        console.log('type:set');
+        this.log("type:set");
         this.setAttribute("type", val);
     }
     open() {
-        console.log('open');
+        this.log("open");
+        this.$confirm.disabled = false;
         this.$alert.classList.remove("alert-hide");
         this.$alert.classList.add("alert-show");
 
         this.$alert.classList.add("active");
         this.$backdrop.classList.add("active");
         document.body.style.overflow = "hidden";
+
+        this.dispatchEvent(new Event("open.alert"));
     }
     close() {
-        console.log('close');
+        this.log("close");
         this.$alert.classList.remove("alert-show");
         this.$alert.classList.add("alert-hide");
         //this.$alert.classList.remove("active");
@@ -742,11 +754,11 @@ class ZinoAlert extends HTMLElement {
 
         }, 150);
     }
-    cancel(event) {
+    cancel() {
         this.dispatchEvent(new Event("cancel.alert"));
         this.close();
     }
-    confirm(event) {
+    confirm() {
         this.shadowRoot.querySelector(".alert-confirm").disabled = true;
         if (this.dispatchEvent(new Event("confirm.alert", {bubbles: false, cancelable: true}))) {
             this.close();
@@ -755,9 +767,14 @@ class ZinoAlert extends HTMLElement {
     onEscape(event) {
         const key = event.which || event.keyCode;
         if (key === 27) {
-            console.log("escape");
+            this.log("escape");
             this.close();
             event.stopPropagation();
+        }
+    }
+    log() {
+        if (this.debug) {
+            console.log.apply(console, arguments);
         }
     }
 }
