@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zino Alert component</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zino Alert">
+    <meta name="twitter:description" content="Autonomous open source alert component">
+    <meta name="twitter:image:src" content="https://riverside.github.io/zino-alert/img/zino-alert.png">
+    <meta name="twitter:url" content="https://riverside.github.io/zino-alert/">
+    <meta name="twitter:site" content="@zino_ui">
+    <meta name="twitter:creator" content="@DimitarIvanov">
+    <meta name="twitter:domain" content="zinoui.com">
+    <meta property="og:title" content="Zino Alert">
+    <meta property="og:site_name" content="Zino UI">
+    <meta property="og:url" content="https://riverside.github.io/zino-alert/">
+    <meta property="og:description" content="Autonomous open source alert component">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="https://twitter.com/DimitarIvanov">
+    <meta property="article:publisher" content="https://github.com/riverside">
+    <meta property="og:image" content="https://riverside.github.io/zino-alert/img/zino-alert.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/docs.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-298048-24"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-298048-24');
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./">Zino Alert</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="./">Home</a></li>
+                    <li class="active"><a href="api.html">API</a></li>
+                    <li><a href="examples.html">Examples</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/riverside/zino-alert">View project on GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col-md-2" role="complementary">
+                <nav class="hidden-sm hidden-xs">
+                    <ul class="nav" id="menu">
+                        <li><a href="#options">Options</a>
+                            <ul class="nav">
+                                <li><a href="#opt-allowEscapeKey">allowEscapeKey</a></li>
+                                <li><a href="#opt-animation">animation</a></li>
+                                <li><a href="#opt-backdrop">backdrop</a></li>
+                                <li><a href="#opt-background">background</a></li>
+                                <li><a href="#opt-cancelButtonAriaLabel">cancelButtonAriaLabel</a></li>
+                                <li><a href="#opt-cancelButtonColor">cancelButtonColor</a></li>
+                                <li><a href="#opt-cancelButtonText">cancelButtonText</a></li>
+                                <li><a href="#opt-closeButtonAriaLabel">closeButtonAriaLabel</a></li>
+                                <li><a href="#opt-confirmButtonAriaLabel">confirmButtonAriaLabel</a></li>
+                                <li><a href="#opt-confirmButtonColor">confirmButtonColor</a></li>
+                                <li><a href="#opt-confirmButtonText">confirmButtonText</a></li>
+                                <li><a href="#opt-debug">debug</a></li>
+                                <li><a href="#opt-focusCancel">focusCancel</a></li>
+                                <li><a href="#opt-focusConfirm">focusConfirm</a></li>
+                                <li><a href="#opt-footer">footer</a></li>
+                                <li><a href="#opt-header">header</a></li>
+                                <li><a href="#opt-heading">heading</a></li>
+                                <li><a href="#opt-position">position</a></li>
+                                <li><a href="#opt-showCancelButton">showCancelButton</a></li>
+                                <li><a href="#opt-showCloseButton">showCloseButton</a></li>
+                                <li><a href="#opt-showConfirmButton">showConfirmButton</a></li>
+                                <li><a href="#opt-text">text</a></li>
+                                <li><a href="#opt-type">type</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#methods">Methods</a>
+                            <ul class="nav">
+                                <li><a href="#method-cancel">cancel</a></li>
+                                <li><a href="#method-close">close</a></li>
+                                <li><a href="#method-confirm">confirm</a></li>
+                                <li><a href="#method-open">open</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#events">Events</a>
+                            <ul class="nav">
+                                <li><a href="#event-cancel">cancel.alert</a></li>
+                                <li><a href="#event-close">close.alert</a></li>
+                                <li><a href="#event-confirm">confirm.alert</a></li>
+                                <li><a href="#event-open">open.alert</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div><!-- .col-md-2 -->
+            <div class="col-md-10" role="main">
+                <!-- Options -->
+                <h2 class="h3" id="options">Options</h2>
+                <p></p>
+                <section>
+                    <h3 class="h4" id="opt-allowEscapeKey">allowEscapeKey</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>true</code>
+                    </p>
+                    <p>Whether to close the alert when the Escape key is pressed</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-animation">animation</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>true</code>
+                    </p>
+                    <p>Whether to use an animation when show the alert</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-backdrop">backdrop</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>true</code>
+                    </p>
+                    <p>Whether to use a backdrop</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-background">background</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>#fff</code>
+                    </p>
+                    <p>The alert's background color</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-cancelButtonAriaLabel">cancelButtonAriaLabel</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>Cancel</code>
+                    </p>
+                    <p>The cancel button's aria-label attribute</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-cancelButtonColor">cancelButtonColor</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>#aaa</code>
+                    </p>
+                    <p>The cancel button's background color</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-cancelButtonText">cancelButtonText</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>Cancel</code>
+                    </p>
+                    <p>The cancel button's text</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-closeButtonAriaLabel">closeButtonAriaLabel</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>Close</code>
+                    </p>
+                    <p>The close button's aria-label attribute</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-confirmButtonAriaLabel">confirmButtonAriaLabel</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>OK</code>
+                    </p>
+                    <p>The confirm button's aria-label attribute</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-confirmButtonColor">confirmButtonColor</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>#3085d6</code>
+                    </p>
+                    <p>The confirm button's background color</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-confirmButtonText">confirmButtonText</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>OK</code>
+                    </p>
+                    <p>The confirm button's text</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-debug">debug</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>false</code>
+                    </p>
+                    <p>If <code>true</code> will log events into console</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-focusCancel">focusCancel</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>false</code>
+                    </p>
+                    <p>Whether to focus on cancel button when alert show</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-focusConfirm">focusConfirm</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>true</code>
+                    </p>
+                    <p>Whether to focus on confirm button when alert show</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-footer">footer</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>""</code>
+                    </p>
+                    <p>If not empty will show it's content at the alert's footer</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-header">header</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>""</code>
+                    </p>
+                    <p>If not empty will show it's content at the alert's header</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-heading">heading</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>""</code>
+                    </p>
+                    <p>The alert's heading text</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-position">position</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>center</code>
+                    </p>
+                    <p>The alert's position. Accepts: top, top-start, top-left, top-end, top-right, center, center-start, center-left, center-end, center-right, bottom, bottom-start, bottom-left, bottom-end, bottom-right</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-showCancelButton">showCancelButton</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>false</code>
+                    </p>
+                    <p>Whether to show the cancel button</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-showCloseButton">showCloseButton</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>false</code>
+                    </p>
+                    <p>Whether to show the close button</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-showConfirmButton">showConfirmButton</h3>
+                    <p>
+                        Type: <code>Boolean</code>
+                        <br>
+                        Default: <code>true</code>
+                    </p>
+                    <p>Whether to show the confirm button</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-text">text</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>""</code>
+                    </p>
+                    <p>The alert's text</p>
+                </section>
+                <section>
+                    <h3 class="h4" id="opt-type">type</h3>
+                    <p>
+                        Type: <code>String</code>
+                        <br>
+                        Default: <code>""</code>
+                    </p>
+                    <p>The alert's icon. Accepts: success, error</p>
+                </section>
+                <!-- Methods -->
+                <h2 class="h3" id="methods">Methods</h2>
+                <section>
+                    <h3 class="h4" id="method-cancel">cancel</h3>
+                    <p>Manually triggers the <code>cancel.alert</code> event.</p>
+                    <pre class="prettyprint">const alert = document.querySelector("zino-alert");
+alert.cancel();</pre>
+                </section>
+                <section>
+                    <h3 class="h4" id="method-close">close</h3>
+                    <p>Manually closes an alert and triggers the <code>close.alert</code> event.</p>
+                    <pre class="prettyprint">const alert = document.querySelector("zino-alert");
+alert.close();</pre>
+                </section>
+                <section>
+                    <h3 class="h4" id="method-confirm">confirm</h3>
+                    <p>	Manually triggers the <code>confirm.alert</code> event.</p>
+                    <pre class="prettyprint">const alert = document.querySelector("zino-alert");
+alert.confirm();</pre>
+                </section>
+                <section>
+                    <h3 class="h4" id="method-open">open</h3>
+                    <p>Manually opens an alert and triggers the <code>open.alert</code> event.</p>
+                    <pre class="prettyprint">const alert = document.querySelector("zino-alert");
+alert.open();</pre>
+                </section>
+                <!-- Events -->
+                <h2 class="h3" id="events">Events</h2>
+                <section>
+                    <h3 class="h4" id="event-cancel">cancel.alert</h3>
+                    <p>This event is fired immediately when the <strong>Cancel</strong> button has been clicked.</p>
+                    <pre class="prettyprint">
+document.querySelector("zino-alert").addEventListener("cancel.alert", function(event) {
+    // do something...
+});</pre>
+                </section>
+                <section>
+                    <h3 class="h4" id="event-close">close.alert</h3>
+                    <p>This event is fired immediately when the <code>close</code> instance method has been called.</p>
+                    <pre class="prettyprint">
+document.querySelector("zino-alert").addEventListener("close.alert", function(event) {
+    // do something...
+});</pre>
+                </section>
+                <section>
+                    <h3 class="h4" id="event-confirm">confirm.alert</h3>
+                    <p>This event is fired immediately when the <strong>Confirm</strong> button has been clicked.</p>
+                    <pre class="prettyprint">
+document.querySelector("zino-alert").addEventListener("confirm.alert", function(event) {
+    // do something...
+});</pre>
+                </section>
+                <section>
+                    <h3 class="h4" id="event-open">open.alert</h3>
+                    <p>This event is fired immediately when the <code>open</code> instance method has been called.</p>
+                    <pre class="prettyprint">
+document.querySelector("zino-alert").addEventListener("open.alert", function(event) {
+    // do something...
+});</pre>
+                </section>
+            </div><!-- .col-md-10 -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/run_prettify.js"></script>
+    <script src="js/docs.js"></script>
+</body>
+</html>

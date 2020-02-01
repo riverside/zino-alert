@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zino Alert component</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zino Alert">
+    <meta name="twitter:description" content="Autonomous open source alert component">
+    <meta name="twitter:image:src" content="https://riverside.github.io/zino-alert/img/zino-alert.png">
+    <meta name="twitter:url" content="https://riverside.github.io/zino-alert/">
+    <meta name="twitter:site" content="@zino_ui">
+    <meta name="twitter:creator" content="@DimitarIvanov">
+    <meta name="twitter:domain" content="zinoui.com">
+    <meta property="og:title" content="Zino Alert">
+    <meta property="og:site_name" content="Zino UI">
+    <meta property="og:url" content="https://riverside.github.io/zino-alert/">
+    <meta property="og:description" content="Autonomous open source alert component">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="https://twitter.com/DimitarIvanov">
+    <meta property="article:publisher" content="https://github.com/riverside">
+    <meta property="og:image" content="https://riverside.github.io/zino-alert/img/zino-alert.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/docs.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-298048-24"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-298048-24');
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">Zino Alert</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="./">Home</a></li>
+                <li><a href="api.html">API</a></li>
+                <li class="active"><a href="examples.html">Examples</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/riverside/zino-alert">View project on GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-4">
+            <p>HTML way</p>
+            <button type="button" class="btn btn-primary btn-lg" id="example-1">Alert me!</button>
+        </div>
+        <div class="col-md-8">
+            <pre class="prettyprint">&lt;zino-alert id="alert-1"
+    heading="HTML"
+    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    type="success"&gt;&lt;/zino-alert&gt;
+
+&lt;script type="module" src="../zino-alert.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+document.querySelector("#example-1").addEventListener("click", function (event) {
+    const alert = document.querySelector("#alert-1");
+    if (alert) {
+        alert.open();
+    }
+});
+&lt;/script&gt;</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>DOM API</p>
+            <button type="button" class="btn btn-primary btn-lg" id="example-2">Alert me!</button>
+        </div>
+        <div class="col-md-8">
+            <pre class="prettyprint">
+&lt;script type="module" src="../zino-alert.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+document.querySelector("#example-2").addEventListener("click", function (event) {
+    const alert = document.createElement("zino-alert");
+    alert.heading = "DOM API";
+    alert.type = "success";
+    alert.text = "Autonomous WAI-ARIA accessible alert dialog.";
+    document.body.appendChild(alert);
+    alert.open();
+});
+&lt;/script&gt;</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Constructor</p>
+            <button type="button" class="btn btn-primary btn-lg" id="example-3">Alert me!</button>
+        </div>
+        <div class="col-md-8">
+            <pre class="prettyprint">
+&lt;script type="module"&gt;
+import {ZinoAlert} from "../zino-alert.js";
+document.querySelector("#example-3").addEventListener("click", function (event) {
+    const alert = new ZinoAlert({
+        heading: "Constructor",
+        type: "success",
+        text: "A web component build on Custom Elements and Shadow DOM APIs.",
+        showCancelButton: "true",
+        allowEscapeKey: "true"
+    });
+    document.body.appendChild(alert);
+    alert.open();
+});
+&lt;/script&gt;</pre>
+        </div>
+    </div>
+</div>
+
+<zino-alert id="alert-1" heading="HTML" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." type="success"></zino-alert>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/run_prettify.js"></script>
+<script type="module" src="../zino-alert.js"></script>
+<script>
+// Example 1
+document.querySelector("#example-1").addEventListener("click", function (event) {
+    const alert = document.querySelector("#alert-1");
+    if (alert) {
+        alert.open();
+    }
+});
+
+// Example 2
+document.querySelector("#example-2").addEventListener("click", function (event) {
+    const alert = document.createElement("zino-alert");
+    alert.heading = "DOM API";
+    alert.type = "success";
+    alert.text = "Autonomous WAI-ARIA accessible alert dialog.";
+    document.body.appendChild(alert);
+    alert.open();
+});
+</script>
+
+<script type="module">
+// Example 3
+import {ZinoAlert} from "../zino-alert.js";
+
+let alert = null;
+
+function createInstance() {
+    alert = new ZinoAlert({
+        heading: "Constructor",
+        type: "success",
+        text: "A web component build on Custom Elements and Shadow DOM APIs.",
+        showCancelButton: "true",
+        allowEscapeKey: "true"
+    });
+    document.body.appendChild(alert);
+}
+
+document.querySelector("#example-3").addEventListener("click", function (event) {
+    if (alert === null) {
+        createInstance();
+    }
+    alert.open();
+});
+</script>
+</body>
+</html>
