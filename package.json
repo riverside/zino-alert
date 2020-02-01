@@ -22,7 +22,7 @@
     "url": "https://github.com/riverside/zino-alert.git"
   },
   "bugs": "https://github.com/riverside/zino-alert/issues",
-  "homepage": "https://github.com/riverside/zino-alert",
+  "homepage": "https://riverside.github.io/zino-alert/",
   "scripts": {
     "test": "jest"
   },
