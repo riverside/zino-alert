@@ -1,7 +1,9 @@
 # JavaScript Alert Web Component
 Autonomous open source alert component with RTL support built on Custom Elements and Shadow DOM specifications.
 
-[![NPM](https://nodei.co/npm/zino-alert.png)](https://nodei.co/npm/zino-alert/)
+| Build | GitHub pages | NPM |
+| --- | --- | --- |
+| [![CI](https://github.com/riverside/zino-alert/actions/workflows/test.yml/badge.svg)](https://github.com/riverside/zino-alert/actions/workflows/test.yml) | [![pages-build-deployment](https://github.com/riverside/zino-alert/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/riverside/zino-alert/actions/workflows/pages/pages-build-deployment) | [![npm version](https://badge.fury.io/js/zino-alert.svg)](https://badge.fury.io/js/zino-alert) |
 
 ## How to use
 
